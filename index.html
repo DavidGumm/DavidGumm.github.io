@@ -1,1 +1,293 @@
-Hello World
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+
+  <meta charset="UTF-8">
+  <link rel="shortcut icon" type="image/x-icon" href="https://static.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico" />
+  <link rel="mask-icon" type="" href="https://static.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111" />
+  <title>CodePen - Night sky with twinkling stars and moon, distance does not matter</title>
+
+
+
+  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.css'>
+<link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Shadows+Into+Light'>
+
+      <style>
+      /* ============================================================
+moon and text by David Gumm
+twinkling stars by Nick Mkrtchyan
+https://www.facebook.com/sonick.pk
+http://www.Mkrtchyan.zz.mu
+=============================================================== */
+
+.js-loading *,
+.js-loading *:before,
+.js-loading *:after {
+  -webkit-transition: paused !important;
+  -moz-transition: paused !important;
+  -ms-transition: paused !important;
+  -o-transition: paused !important;
+}
+
+@-webkit-keyframes display-text {
+  from {
+    visibility: hidden;
+    opacity: 0;
+  }
+  to {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+@keyframes display-text {
+  from {
+    visibility: hidden;
+    opacity: 0;
+  }
+  to {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes move-moon {
+  from {
+    margin-top: 110vh;
+  }
+  to {
+    margin-top: 10vh;
+  }
+}
+
+@keyframes move-moon {
+  from {
+    margin-top: 110vh;
+  }
+  to {
+    margin-top: 10vh;
+  }
+}
+
+.js-loading * {
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -ms-transition: none !important;
+  -o-transition: none !important;
+}
+
+@keyframes move-twink-back {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -10000px 5000px;
+  }
+}
+@-webkit-keyframes move-twink-back {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -10000px 5000px;
+  }
+}
+
+@keyframes move-clouds-back {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 10000px 0;
+  }
+}
+@-webkit-keyframes move-clouds-back {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 10000px 0;
+  }
+}
+
+@-webkit-keyframes bluegreyPulse {
+  from {
+    background-color: rgba(144, 154, 175, 0.25);
+    -webkit-box-shadow: 0 0 16px #9199a5;
+  }
+  50% {
+    background-color: rgba(156, 164, 175, 0.25);
+    -webkit-box-shadow: 0 0 18px #9ca4af;
+  }
+  to {
+    background-color: rgba(144, 154, 175, 0.25);
+    -webkit-box-shadow: 0 0 16px #9199a5;
+  }
+}
+
+body {
+  background: #000
+    url(http://www.script-tutorials.com/demos/360/images/stars.png) repeat top
+    center;
+  overflow-y: hidden;
+}
+
+.twinkling {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: transparent
+    url(http://www.script-tutorials.com/demos/360/images/twinkling.png) repeat
+    top center;
+  z-index: 1;
+  -webkit-animation: move-twink-back 200s linear infinite;
+  animation: move-twink-back 200s linear infinite;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+p {
+  font-family: "Shadows Into Light", cursive;
+  font-size: 1.5rem;
+  backgound-color: white;
+  color: white;
+  text-align: center;
+  z-index: 1000;
+  width: 100%;
+  margin: auto;
+  margin-top: 25px;
+  border-radius: 15vw;
+  text-shadow: 1px 1px 2px black;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-animation: display-text 5s ease forwards;
+  animation: display-text 5s ease forwards;
+}
+
+.text-0 {
+  visibility: hidden;
+  opacity: 0;
+  -webkit-animation: display-text 5s ease forwards;
+  animation: display-text 5s ease forwards;
+}
+
+.animation-delay {
+  -webkit-animation-delay: 5s;
+  animation-delay: 5s;
+}
+
+.moon {
+  width: 30vw;
+  height: 30vw;
+  margin: auto;
+  border-radius: 15vw;
+  -webkit-animation: move-moon 5s ease forwards;
+  animation: move-moon 5s ease forwards;
+}
+
+.moon-image {
+  z-index: 5;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 25px;
+  margin-top: 25px;
+  background: transparent url(http://geekthinktank.com/tmp/FullMoon2010-sm.png);
+  background-repeat: no-repeat;
+  background-size: 30vw 30vw;
+}
+
+.moon-glow {
+  z-index: 4;
+  border-radius: 15vw;
+  -webkit-animation-name: bluegreyPulse;
+  -webkit-animation-duration: 4s;
+  -webkit-animation-iteration-count: infinite;
+}
+
+@media only screen and (max-width: 600px) {
+  .moon-image {
+    margin-top: 10vh;
+  }
+  .moon {
+    width: 40vw;
+    height: 40vw;
+    border-radius: 20vw;
+    background-size: 40vw 40vw;
+  }
+}
+@media only screen and (min-width: 601px, max-width: 768px) {
+  .moon {
+    width: 20vw;
+    height: 20vw;
+    border-radius: 10vw;
+    background-size: 20vw 20vw;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+    </style>
+
+
+
+
+
+
+</head>
+
+<body translate="no" >
+
+  <div class="moon-image moon">
+  <div class="moon-glow moon">
+  </div>
+</div>
+<p class="text-0 animation-delay">click to read.</p>
+<p class="text-1 hidden">Last night the light from The Moon and stars shone on you.</p>
+<p class="text-2 hidden">That same moon and stars shone on me.</p>
+<p class="text-3 hidden">It does not matter where we live, we see the same stars and moon in the nights sky.</p>
+<p class="text-4 hidden">Distance does not matter.</p>
+<div class="twinkling">
+</div>
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js'></script>
+
+
+
+    <script >
+      document.body.classList.add('js-loading');
+
+window.addEventListener("load", showPage);
+
+function showPage() {
+  document.body.classList.remove('js-loading');
+}
+
+var click_count = 0;
+
+$("body").on('click touch',function() {
+  ++click_count;
+  $(".text-" + (click_count - 1) ).addClass('hidden');
+  $(".text-" + (click_count - 1) ).removeClass('animation-delay');
+  $(".text-" + click_count).removeClass('hidden');
+  if(click_count == 5) {
+    click_count = 0;
+    $(".text-0").removeClass('hidden');
+  }
+});
+    </script>
+
+
+
+
+
+</body>
+
+</html>
