@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Time</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.1.3/darkly/bootstrap.min.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  </head>
+  <body>
+    <div class="tab-pane fade active show" id="time_diff">
+  <span id="times"></span>
+  <div class="card-header">
+    <div>
+      <input id="times-first-start" type="time" step="300" onclick="time_diff();" />
+      <span>-</span>
+      <input id="times-first-end" type="time" step="300" onclick="time_diff();" />
+      <div id="slider-range-1"></div>
+    </div>
+    <input id="lunch-checkbox" type="checkbox" checked="checked" onclick="time_diff();" />
+    <div>
+      <input id="times-second-start" type="time" step="300" onclick="time_diff();" />
+      <span>-</span>
+      <input id="times-second-end" type="time" step="300" onclick="time_diff();" />
+      <div id="slider-range-2"></div>
+    </div>
+  </div>
+
+  <div class="card-body row">
+    <div>
+      <h4>
+        <span>First: </span>
+        <span id="time_diff_out-1" class="time_output"></span>
+        <span> Hours</span>
+      </h4>
+      <br />
+      <h4>
+        <span>Lunch: </span>
+        <span id="time_diff_out-lunch" class="time_output"></span>
+        <span> Hours</span>
+      </h4>
+      <br />
+      <h4>
+        <span>Second: </span>
+        <span id="time_diff_out-2" class="time_output"></span>
+        <span> Hours</span>
+      </h4>
+      <br />
+      <h4>
+        <span id="total_time_diff_out"></span>
+        <span> Hours</span>
+      </h4>
+    </div>
+  </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+  <script>
+
+  function setCookie(name,value,days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days*24*60*60*1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+}
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
+function eraseCookie(name) {
+    document.cookie = name+'=; Max-Age=-99999999;';
+}
+
+
+
+
+  var times = new Object();
+
+
+
+  function save(saveTimes) {
+    document.cookie = 'time=' + saveTimes;
+  };
+
+  function isFUll(obj) {
+      for(var prop in obj) {
+          if(obj.hasOwnProperty(prop))
+              return true;
+      }
+      return false;
+  }
+
+
+  if(isFUll(getCookie('time')))
+  {
+    times = JSON.parse(getCookie('time'));
+  }
+  else{
+
+    times.first = new Object();
+    times.lunch = new Object();
+    times.second = new Object();
+    times.lunch.taken = true;
+
+    times.first.start = new Date(2000, 0, 1, 6, 0);
+    times.first.end = new Date(2000, 0, 1, 10, 0);
+    times.lunch.start = new Date(2000, 0, 1, 10, 0);
+    times.lunch.end = new Date(2000, 0, 1, 11, 0);
+    times.second.start = new Date(2000, 0, 1, 11, 0);
+    times.second.end = new Date(2000, 0, 1, 15, 0);
+  }
+    console.log(times);
+
+  if (isFUll(times)) {
+    document.getElementById("times-first-start").value = times.first.start;
+    document.getElementById("times-first-end").value = times.first.end;
+
+    document.getElementById("times-second-start").value = times.second.start;
+    document.getElementById("times-second-end").value = times.second.start;
+  }
+
+  if (times.lunch.taken) {
+    document.getElementById("lunch-checkbox").checked = true;
+  } else {
+    document.getElementById("lunch-checkbox").checked = false;
+  }
+
+  $("#slider-range-1").slider({
+    range: true,
+    min: 0,
+    max: 1440,
+    step: 5,
+    values: [
+      new Date(times.first.start).getHours() * 60 +
+        new Date(times.first.start).getMinutes(),
+      new Date(times.first.end).getHours() * 60 +
+        new Date(times.first.end).getMinutes()
+    ],
+    slide: slideTime_1
+  });
+
+  $("#slider-range-2").slider({
+    range: true,
+    min: 0,
+    max: 1440,
+    step: 5,
+    values: [
+      new Date(times.second.start).getHours() * 60 +
+        new Date(times.second.start).getMinutes(),
+      new Date(times.second.end).getHours() * 60 +
+        new Date(times.second.end).getMinutes()
+    ],
+    slide: slideTime_2
+  });
+
+  function slideTime_1(event, ui) {
+    var val0 = $("#slider-range-1").slider("values", 0),
+      val1 = $("#slider-range-1").slider("values", 1),
+      minutes0 = parseInt(val0 % 60, 10),
+      hours0 = parseInt((val0 / 60) % 24, 10),
+      minutes1 = parseInt(val1 % 60, 10),
+      hours1 = parseInt((val1 / 60) % 24, 10);
+
+    startTime = getTime(hours0, minutes0);
+    endTime = getTime(hours1, minutes1);
+    document.getElementById("times-first-start").value = startTime;
+    document.getElementById("times-first-end").value = endTime;
+
+    time_diff();
+  }
+
+  function slideTime_2(event, ui) {
+    var val0 = $("#slider-range-2").slider("values", 0),
+      val1 = $("#slider-range-2").slider("values", 1),
+      minutes0 = parseInt(val0 % 60, 10),
+      hours0 = parseInt((val0 / 60) % 24, 10),
+      minutes1 = parseInt(val1 % 60, 10),
+      hours1 = parseInt((val1 / 60) % 24, 10);
+
+    startTime = getTime(hours0, minutes0);
+    endTime = getTime(hours1, minutes1);
+    document.getElementById("times-second-start").value = startTime;
+    document.getElementById("times-second-end").value = endTime;
+
+    time_diff();
+  }
+
+  function getTime(hours, minutes) {
+    var time = null;
+    minutes = minutes + "";
+    hours = hours + "";
+
+    if (minutes.length == 1) {
+      minutes = "0" + minutes;
+    }
+
+    if (hours.length == 1) {
+      hours = "0" + hours;
+    }
+    return hours + ":" + minutes;
+  }
+  slideTime_1();
+  slideTime_2();
+
+  time_diff("time_start-1", "time_end-1", "time_diff_out-1");
+  time_diff("time_start-2", "time_end-2", "time_diff_out-2");
+  function time_diff(start, end, out) {
+    var time = new Object();
+    time.first = new Object();
+    time.lunch = new Object();
+    time.second = new Object();
+
+    var start_1 = document.getElementById("times-first-start").value;
+    var end_1 = document.getElementById("times-first-end").value;
+
+    var start_2 = document.getElementById("times-second-start").value;
+    var end_2 = document.getElementById("times-second-end").value;
+
+    var lunch = document.getElementById("lunch-checkbox");
+
+    var output_1 = document.getElementById("time_diff_out-1");
+    var output_2 = document.getElementById("time_diff_out-2");
+    var output_lunch = document.getElementById("time_diff_out-lunch");
+    var output_total = document.getElementById("total_time_diff_out");
+
+    var lunch_start;
+    var lunch_end;
+
+    if (lunch.checked) {
+      time.lunch.taken = true;
+      lunch_start = end_1;
+      lunch_end = start_2;
+    } else {
+      time.lunch.taken = false;
+      lunch_start = "0:00";
+      lunch_end = "0:00";
+    }
+
+    time.first.start = new Date(
+      2000,
+      0,
+      1,
+      start_1.split(":")[0],
+      start_1.split(":")[1]
+    );
+    time.first.end = new Date(
+      2000,
+      0,
+      1,
+      end_1.split(":")[0],
+      end_1.split(":")[1]
+    );
+    time.lunch.start = new Date(
+      2000,
+      0,
+      1,
+      lunch_start.split(":")[0],
+      lunch_start.split(":")[1]
+    );
+    time.lunch.end = new Date(
+      2000,
+      0,
+      1,
+      lunch_end.split(":")[0],
+      lunch_end.split(":")[1]
+    );
+    time.second.start = new Date(
+      2000,
+      0,
+      1,
+      start_2.split(":")[0],
+      start_2.split(":")[1]
+    );
+    time.second.end = new Date(
+      2000,
+      0,
+      1,
+      end_2.split(":")[0],
+      end_2.split(":")[1]
+    );
+
+    var diff_1 = (time.first.end - time.first.start) / 3600000;
+    var diff_2 = (time.second.end - time.second.start) / 3600000;
+    var diff_lunch = (time.lunch.end - time.lunch.start) / 3600000;
+
+    if(diff_lunch > 1 )
+    {
+      diff_lunch = 1;
+    }
+
+    output_total.textContent = (diff_1 + diff_2 + diff_lunch).toFixed(2);
+    output_1.textContent = diff_1.toFixed(2);
+    output_2.textContent = diff_2.toFixed(2);
+    output_lunch.textContent = diff_lunch.toFixed(2);
+    setCookie('times',JSON.stringify(time),99);
+  }
+
+  </script>
+  </body>
+</html>
