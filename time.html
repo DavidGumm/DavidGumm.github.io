@@ -14,13 +14,13 @@
     <div class="card-header">
       <div class="form-row">
         <div class="col">
-          <input id="times-first-start" class="form-control form-control-lg" type="time" step="300" onclick="time_diff();" />
+          <input id="times-first-start" class="form-control form-control-lg time-control" type="time" step="300" onclick="time_diff();" />
         </div>
         <div class="col">
           <span>-</span>
         </div>
         <div class="col">
-          <input id="times-first-end" class="form-control form-control-lg" type="time" step="300" onclick="time_diff();" />
+          <input id="times-first-end" class="form-control form-control-lg time-control" type="time" step="300" onclick="time_diff();" />
         </div>
       </div>
       <div class="form-row">
@@ -30,7 +30,7 @@
       </div>
       <div class="form-inline">
         <div class="form-group">
-          <input id="lunch-checkbox" class="form-control form-control-lg " type="checkbox" checked="checked" onclick="time_diff();" />
+          <input id="lunch-checkbox" class="form-control form-control-lg time-control" type="checkbox" checked="checked" onclick="" />
           <label class="form-check-label" for="exampleRadios1">
             Lunch
           </label>
@@ -38,13 +38,13 @@
       </div>
       <div class="form-row">
         <div class="col">
-          <input id="times-second-start" class="form-control form-control-lg" type="time" step="300" onclick="time_diff();" />
+          <input id="times-second-start" class="form-control form-control-lg time-control" type="time" step="300" onclick="time_diff();" />
         </div>
         <div class="col">
           <span>-</span>
         </div>
         <div class="col">
-          <input id="times-second-end" class="form-control form-control-lg" type="time" step="300" onclick="time_diff();" /></div>
+          <input id="times-second-end" class="form-control form-control-lg time-control" type="time" step="300" onclick="time_diff();" /></div>
       </div>
       <div class="form-row">
         <div class="col">
@@ -84,6 +84,15 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
   <script src="/times.js"></script>
   <script>
+
+  var timeControl = document.querySelectorAll('.time-control');
+
+  for (var i = 0; i < timeControl.length; i++) {
+      timeControl[i].addEventListener('input', function(event) {
+          time_diff();
+      });
+  }
+
     function setCookie(name, value, days) {
       var expires = "";
       if (days) {
@@ -109,10 +118,6 @@
       document.cookie = name + '=; Max-Age=-99999999;';
     }
     var times = new Object();
-
-    function save(saveTimes) {
-      document.cookie = 'time=' + saveTimes;
-    };
 
     function isFUll(obj) {
       for (var prop in obj) {
