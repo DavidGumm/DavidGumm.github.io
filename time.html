@@ -9,21 +9,44 @@
   <body>
     <div class="tab-pane fade active show" id="time_diff">
   <span id="times"></span>
-  <div class="card-header">
-    <div>
-      <input id="times-first-start" type="time" step="300" onclick="time_diff();" />
-      <span>-</span>
-      <input id="times-first-end" type="time" step="300" onclick="time_diff();" />
-      <div id="slider-range-1"></div>
+    <div class="card-header">
+      <div class="form-row">
+        <div class="col">
+          <input id="times-first-start" class="form-control" type="time" step="300" onclick="time_diff();" />
+        </div>
+        <div class="col">
+          <span>-</span>
+        </div>
+        <div class="col">
+          <input id="times-first-end" class="form-control" type="time" step="300" onclick="time_diff();" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col">
+          <div id="slider-range-1"></div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col">
+          <input id="lunch-checkbox" class="form-check-input" type="checkbox" checked="checked" onclick="time_diff();" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col">
+          <input id="times-second-start" class="form-control" type="time" step="300" onclick="time_diff();" />
+        </div>
+        <div class="col">
+          <span>-</span>
+        </div>
+        <div class="col">
+          <input id="times-second-end" class="form-control" type="time" step="300" onclick="time_diff();" /></div>
+      </div>
+      <div class="form-row">
+        <div class="col">
+          <div id="slider-range-2"></div>
+        </div>
+      </div>
     </div>
-    <input id="lunch-checkbox" type="checkbox" checked="checked" onclick="time_diff();" />
-    <div>
-      <input id="times-second-start" type="time" step="300" onclick="time_diff();" />
-      <span>-</span>
-      <input id="times-second-end" type="time" step="300" onclick="time_diff();" />
-      <div id="slider-range-2"></div>
-    </div>
-  </div>
 
   <div class="card-body row">
     <div>
