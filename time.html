@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-
-<head>
+<html lang="en" dir="ltr"><head>
   <meta charset="utf-8">
   <title>Time</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.1.3/darkly/bootstrap.min.css">
@@ -13,42 +11,42 @@
     <span id="times"></span>
     <div class="card-header">
       <div class="form-row">
-        <div class="col">
-          <input id="times-first-start" class="form-control form-control-lg time-control" type="time" step="300" onclick="time_diff();" />
+        <div class="col-lg-4">
+          <input id="times-first-start" class="form-control form-control-lg time-control" type="time" step="300" onclick="time_diff();">
         </div>
-        <div class="col">
+        <div class="col-lg-4">
           <span>-</span>
         </div>
-        <div class="col">
-          <input id="times-first-end" class="form-control form-control-lg time-control" type="time" step="300" onclick="time_diff();" />
+        <div class="col-lg-4">
+          <input id="times-first-end" class="form-control form-control-lg time-control" type="time" step="300" onclick="time_diff();">
         </div>
       </div>
       <div class="form-row">
         <div class="col">
-          <div id="slider-range-1"></div>
+          <div id="slider-range-1" class="ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"><div class="ui-slider-range ui-corner-all ui-widget-header" style="left: 27.0833%; width: 17.7083%;"></div><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 27.0833%;"></span><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 44.7917%;"></span></div>
         </div>
       </div>
       <div class="form-inline">
         <div class="form-group">
-          <input id="lunch-checkbox" class="form-control form-control-lg time-control" type="checkbox" checked="checked" onclick="" />
+          <input id="lunch-checkbox" class="form-control form-control-lg time-control" type="checkbox" checked="checked" onclick="">
           <label class="form-check-label" for="exampleRadios1">
             Lunch
           </label>
         </div>
       </div>
       <div class="form-row">
-        <div class="col">
-          <input id="times-second-start" class="form-control form-control-lg time-control" type="time" step="300" onclick="time_diff();" />
+        <div class="col-lg-4">
+          <input id="times-second-start" class="form-control form-control-lg time-control" type="time" step="300" onclick="time_diff();">
         </div>
-        <div class="col">
+        <div class="col-lg-4">
           <span>-</span>
         </div>
-        <div class="col">
-          <input id="times-second-end" class="form-control form-control-lg time-control" type="time" step="300" onclick="time_diff();" /></div>
+        <div class="col-lg-4">
+          <input id="times-second-end" class="form-control form-control-lg time-control" type="time" step="300" onclick="time_diff();"></div>
       </div>
       <div class="form-row">
         <div class="col">
-          <div id="slider-range-2"></div>
+          <div id="slider-range-2" class="ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"><div class="ui-slider-range ui-corner-all ui-widget-header" style="left: 62.5%; width: 15.625%;"></div><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 62.5%;"></span><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 78.125%;"></span></div>
         </div>
       </div>
     </div>
@@ -57,24 +55,24 @@
       <div>
         <h4>
           <span>First: </span>
-          <span id="time_diff_out-1" class="time_output"></span>
+          <span id="time_diff_out-1" class="time_output">4.25</span>
           <span> Hours</span>
         </h4>
-        <br />
+        <br>
         <h4>
           <span>Lunch: </span>
-          <span id="time_diff_out-lunch" class="time_output"></span>
+          <span id="time_diff_out-lunch" class="time_output">1.00</span>
           <span> Hours</span>
         </h4>
-        <br />
+        <br>
         <h4>
           <span>Second: </span>
-          <span id="time_diff_out-2" class="time_output"></span>
+          <span id="time_diff_out-2" class="time_output">3.75</span>
           <span> Hours</span>
         </h4>
-        <br />
+        <br>
         <h4>
-          <span id="total_time_diff_out"></span>
+          <span id="total_time_diff_out">9.00</span>
           <span> Hours</span>
         </h4>
       </div>
@@ -304,6 +302,7 @@
       setCookie('time', JSON.stringify(time), 99);
     }
   </script>
-</body>
 
-</html>
+
+
+</body></html>
