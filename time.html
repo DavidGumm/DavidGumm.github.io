@@ -1,52 +1,90 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr"><head>
+<html lang="en" dir="ltr">
+
+<head>
   <meta charset="utf-8">
   <title>Time</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.1.3/darkly/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.5.1/css/foundation.min.css" integrity="sha256-1mcRjtAxlSjp6XJBgrBeeCORfBp/ppyX4tsvpQVCcpA=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <style>
+    body
+  {
+    background-color: #242424;
+    color:#efefef
+  }
+  label
+  {
+    background-color: #242424;
+    color:#efefef
+  }
+  .main-content
+  {
+    margin-top: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+  @media screen
+  and (min-width: 800px)
+  {
+    .main-content
+    {
+      margin-left: 6rem;
+      margin-right: 6rem;
+    }
+  }
+
+</style>
 </head>
 
 <body>
-  <div class="tab-pane fade active show" id="time_diff">
+  <div class="main-content">
     <span id="times"></span>
     <div class="card-header">
-      <div class="form-row">
-        <div class="col-lg-4">
-          <input id="times-first-start" class="form-control form-control-lg time-control" type="time" step="300" onclick="time_diff();">
+      <div class="row">
+        <div class="large-3 columns">
+          <input id="times-first-start" class="" type="time" step="300" onclick="time_diff();">
         </div>
-        <div class="col-lg-4">
+        <div class="large-3 columns">
           <span>-</span>
         </div>
-        <div class="col-lg-4">
-          <input id="times-first-end" class="form-control form-control-lg time-control" type="time" step="300" onclick="time_diff();">
+        <div class="large-3 columns">
+          <input id="times-first-end" class="" type="time" step="300" onclick="time_diff();">
         </div>
       </div>
-      <div class="form-row">
-        <div class="col">
-          <div id="slider-range-1" class="ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"><div class="ui-slider-range ui-corner-all ui-widget-header" style="left: 27.0833%; width: 17.7083%;"></div><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 27.0833%;"></span><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 44.7917%;"></span></div>
+      <div class="row">
+        <div class="large-1 columns">
+          <div id="slider-range-1" class="ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
+            <div class="ui-slider-range ui-corner-all ui-widget-header" style="left: 27.0833%; width: 17.7083%;"></div><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 27.0833%;"></span><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"
+              style="left: 44.7917%;"></span>
+            <div class="ui-slider-range ui-corner-all ui-widget-header" style="left: 27.0833%; width: 17.7083%;"></div>
+          </div>
         </div>
       </div>
       <div class="form-inline">
         <div class="form-group">
-          <input id="lunch-checkbox" class="form-control form-control-lg time-control" type="checkbox" checked="checked" onclick="">
-          <label class="form-check-label" for="exampleRadios1">
+          <input id="lunch-checkbox" class="checkbox" type="checkbox" checked="checked" onclick="">
+          <label for="exampleRadios1">
             Lunch
           </label>
         </div>
       </div>
-      <div class="form-row">
-        <div class="col-lg-4">
-          <input id="times-second-start" class="form-control form-control-lg time-control" type="time" step="300" onclick="time_diff();">
+      <div class="row">
+        <div class="large-3 columns">
+          <input id="times-second-start" class="" type="time" step="300" onclick="time_diff();">
         </div>
-        <div class="col-lg-4">
+        <div class="large-3 columns">
           <span>-</span>
         </div>
-        <div class="col-lg-4">
-          <input id="times-second-end" class="form-control form-control-lg time-control" type="time" step="300" onclick="time_diff();"></div>
+        <div class="large-3 columns">
+          <input id="times-second-end" class="" type="time" step="300" onclick="time_diff();"></div>
       </div>
-      <div class="form-row">
-        <div class="col">
-          <div id="slider-range-2" class="ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"><div class="ui-slider-range ui-corner-all ui-widget-header" style="left: 62.5%; width: 15.625%;"></div><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 62.5%;"></span><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 78.125%;"></span></div>
+      <div class="row">
+        <div class="large-1 columns">
+          <div id="slider-range-2" class="ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
+            <div class="ui-slider-range ui-corner-all ui-widget-header" style="left: 62.5%; width: 15.625%;"></div><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 62.5%;"></span><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"
+              style="left: 78.125%;"></span>
+            <div class="ui-slider-range ui-corner-all ui-widget-header" style="left: 62.5%; width: 15.625%;"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -79,17 +117,16 @@
     </div>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.5.1/js/foundation.min.js" integrity="sha256-WUKHnLrIrx8dew//IpSEmPN/NT3DGAEmIePQYIEJLLs=" crossorigin="anonymous"></script>
   <script src="/times.js"></script>
   <script>
+    var timeControl = document.querySelectorAll('.time-control');
 
-  var timeControl = document.querySelectorAll('.time-control');
-
-  for (var i = 0; i < timeControl.length; i++) {
+    for (var i = 0; i < timeControl.length; i++) {
       timeControl[i].addEventListener('input', function(event) {
-          time_diff();
+        time_diff();
       });
-  }
+    }
 
     function setCookie(name, value, days) {
       var expires = "";
@@ -305,4 +342,7 @@
 
 
 
-</body></html>
+
+</body>
+
+</html>
