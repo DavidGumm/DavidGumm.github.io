@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery Terminal</title>
+  <style>body{background: gray;}</style>
+  <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/jquery.terminal/js/jquery.terminal.js"></script>
+  <link href="https://unpkg.com/jquery.terminal/css/jquery.terminal.css" rel="stylesheet" />
+  <script src="https://unpkg.com/js-polyfills/keyboard.js"></script>
+  <script src="https://cdn.terminal.jcubic.pl/wcwidth.js"></script>
+</head>
+
+<body>
+  <div id="terminal"></div>
+  <div id="console"></div>
+</body>
+<script>
+  Object.byString = function(object, string) {
+    string = string.replace(/\[(\w+)\]/g, '.$1'); // convert indexes to properties
+    string = string.replace(/^\./, ''); // strip a leading dot
+    let array = string.split('.');
+    for (let index = 0, n = array.length; index < n; ++index) {
+      let key = array[index];
+      if (key in object) {
+        object = object[key];
+      } else {
+        return;
+      }
+    }
+    return object;
+  }
+
+
+  let JSterminal = $('#terminal');
+  jQuery(function($, undefined) {
+    JSterminal.terminal(function(command) {
+      if (command !== '') {
+        try {
+          let result = window.eval(command);
+          if (result !== undefined) {
+            console.log(typeof result);
+            if ((typeof result) == "object") {
+              this.echo(new String(result));
+            } else {
+              this.echo(new String(result));
+            }
+          }
+        } catch (e) {
+          this.error(new String(e));
+        }
+      } else {
+        this.echo('');
+      }
+      this.scroll_to_bottom();
+    }, {
+      completion: function(string, callback) {
+        let command_array = string.split(".");
+        string = command_array.filter(v => v != '').join(".");
+        if (command_array.length < 2) {
+          callback(Object.getOwnPropertyNames(window));
+        } else {
+          let returninfo = new Array();
+
+          console.log(returninfo);
+          returninfo = Object.byString(window, "window." + string);
+          temp = returninfo;
+          console.log(returninfo);
+          returninfo = Object.getOwnPropertyNames(returninfo);
+          console.log(returninfo);
+
+          callback(returninfo);
+        }
+      },
+      doubleTab: true,
+      greetings: 'Javascript Interpreter',
+      name: 'JSterminal',
+      numChars:80,
+      numRows: 40,
+      height: 420,
+      width: 620,
+      prompt: ">"
+    });
+  });
+</script>
+</html>
