@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Viva La Tiki</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  <style>
+    html {
+      width: 100vw;
+    }
+
+    body {
+      background: url("http://geekthinktank.com/images/vivalatiki/flyer/tiki.png") no-repeat top center;
+      background-size: cover;
+      height: 100%;
+      width: 100vw;
+    }
+
+    .top {
+      width: 100vw;
+    }
+
+    .bottom {
+      width: 100vw;
+    }
+
+    .link-div {
+      display: flex;
+      width: 100vw;
+      margin: 0px;
+      border: 0px;
+      padding: 0px;
+    }
+
+    .link-div>a {
+      width: 40vw;
+      height: 100%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .link-div>a.location {
+      width: 80vw;
+      display: block;
+    }
+
+    .link-div>a.email {
+      display: block;
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    .left {
+      display: block;
+      width: 15vw;
+    }
+
+    .right {
+      display: block;
+      width: 10vw;
+    }
+
+    .email-left {
+      width: 26vw;
+      display: block;
+    }
+
+    .email-right {
+      display: block;
+      width: 10vw;
+    }
+
+    a:hover {
+      background: #0000001a;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="top"></div>
+    <div class="link-div">
+      <a class="location" href="https://goo.gl/maps/KRMgkrYEFsG2"></a>
+    </div>
+    <div class="link-div">
+      <span class="left"></span>
+      <a class="facebook" href="https://www.facebook.com/VivaLaTiki/"></a>
+      <a class="twitter" href="https://twitter.com/vivalatikishop?s=17"></a>
+      <span class="right"></span>
+    </div>
+    <div class="link-div">
+      <span class="left"></span>
+      <a class="instagram" href="
+https://instagram.com/vivalatikishop?utm_source=ig_profile_share&igshid=u363iccgo979"></a>
+      <a class="snapchat" href="https://www.snapchat.com/add/vivalatikishop"></a>
+      <span class="right"></span>
+    </div>
+    <div class="link-div">
+      <span class="email-left"></span>
+      <a class="email" href="mailto:vivalatikishop@gmail.com"></a>
+      <span class="email-right"></span>
+    </div>
+    <div class="bottom"></div>
+  </div>
+
+
+  <script>
+    let wrapper = document.querySelector('.wrapper');
+    let topdiv = document.querySelector('.top');
+    let bottomdiv = document.querySelector('.bottom');
+    let links = document.querySelectorAll('.link-div');
+
+    let scale = window.innerWidth / screen.width;
+
+    function resize_page() {
+      scale = window.innerWidth / screen.width;
+      wrapper.style.height = (scale * 2100) + "px";
+      topdiv.style.height = (scale * 1170) + "px";
+      links[0].style.height = (scale * 110) + "px";
+      links[1].style.height = (scale * 135) + "px";
+      links[2].style.height = (scale * 125) + "px";
+      links[3].style.height = (scale * 120) + "px";
+      bottomdiv.style.height = (scale * 1028) + "px";
+    }
+
+    resize_page();
+    window.onresize = resize_page;
+  </script>
+</body>
+
+</html>
