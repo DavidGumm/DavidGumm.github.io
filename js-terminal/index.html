@@ -1,126 +1,118 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 
 <head>
-  <meta charset="UTF-8">
-  <title>jQuery Terminal</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.5.3/css/foundation.min.css" integrity="sha256-xpOKVlYXzQ3P03j397+jWFZLMBXLES3IiryeClgU5og=" crossorigin="anonymous" />
-  <link href="https://unpkg.com/jquery.terminal/css/jquery.terminal.css" rel="stylesheet" />
-  <style media="screen">
-    body {
-      background: gray;
-    }
+    <meta charset="UTF-8">
+    <title>jQuery Terminal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.5.3/css/foundation.min.css" integrity="sha256-xpOKVlYXzQ3P03j397+jWFZLMBXLES3IiryeClgU5og=" crossorigin="anonymous" />
+    <link href="https://unpkg.com/jquery.terminal/css/jquery.terminal.css" rel="stylesheet" />
+    <style media="screen">
+        body {
+            background: gray;
+        }
 
-    .site-wrapper {
-      width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-    }
+        .site-wrapper {
+            width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
 
-    .terminal {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      margin: auto;
-    }
+        .terminal {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
 
-    textarea:focus.clipboard {
-      box-shadow: none;
-      -webkit-box-shadow: none;
-    }
-  </style>
+        textarea:focus.clipboard {
+            box-shadow: none;
+            -webkit-box-shadow: none;
+        }
+    </style>
 </head>
 
 <body>
-  <div class="site-wrapper">
+    <div class="site-wrapper">
 
-    <div id="terminal"></div>
-    <div id="console"></div>
-  </div>
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.5.3/js/foundation.js" integrity="sha256-7WVbN/J2vA6l4tJnRTx1Yh3RGQUcNRAYLo0OV9qsL+k=" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/jquery.terminal/js/jquery.terminal.js"></script>
-  <script src="https://unpkg.com/js-polyfills/keyboard.js"></script>
-  <script src="https://cdn.terminal.jcubic.pl/wcwidth.js"></script>
+        <div id="terminal"></div>
+        <div id="console"></div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.5.3/js/foundation.js" integrity="sha256-7WVbN/J2vA6l4tJnRTx1Yh3RGQUcNRAYLo0OV9qsL+k=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/jquery.terminal/js/jquery.terminal.js"></script>
+    <script src="https://unpkg.com/js-polyfills/keyboard.js"></script>
+    <script src="https://cdn.terminal.jcubic.pl/wcwidth.js"></script>
+    <script src="../scripts/script.js"></script>
 </body>
 <script>
+    set_path();
 
-  let location_origin = window.location.origin.toString();
-  let location_pathname = window.location.pathname.toString();
-  let location_array = new Array();
-  location_array.push(location_origin);
-  location_array = location_array.concat(location_pathname.split('/').filter(function (el) {return el != ""}));
-
-
-
-  Object.byString = function(object, string) {
-    string = string.replace(/\[(\w+)\]/g, '.$1'); // convert indexes to properties
-    string = string.replace(/^\./, ''); // strip a leading dot
-    let array = string.split('.');
-    for (let index = 0, n = array.length; index < n; ++index) {
-      let key = array[index];
-      if (key in object) {
-        object = object[key];
-      } else {
-        return;
-      }
-    }
-    return object;
-  }
-
-
-  let JSterminal = $('#terminal');
-  jQuery(function($, undefined) {
-    JSterminal.terminal(function(command) {
-      if (command !== '') {
-        try {
-          let result = window.eval(command);
-          if (result !== undefined) {
-            console.log(typeof result);
-            if ((typeof result) == "object") {
-              this.echo(new String(result));
+    Object.byString = function (object, string) {
+        string = string.replace(/\[(\w+)\]/g, '.$1'); // convert indexes to properties
+        string = string.replace(/^\./, ''); // strip a leading dot
+        let array = string.split('.');
+        for (let index = 0, n = array.length; index < n; ++index) {
+            let key = array[index];
+            if (key in object) {
+                object = object[key];
             } else {
-              this.echo(new String(result));
+                return;
             }
-          }
-        } catch (e) {
-          this.error(new String(e));
         }
-      } else {
-        this.echo('');
-      }
-      this.scroll_to_bottom();
-    }, {
-      completion: function(string, callback) {
-        let command_array = string.split(".");
-        string = command_array.filter(v => v != '').join(".");
-        if (command_array.length < 2) {
-          callback(Object.getOwnPropertyNames(window));
-        } else {
-          let returninfo = new Array();
+        return object;
+    }
 
-          console.log(returninfo);
-          returninfo = Object.byString(window, "window." + string);
-          temp = returninfo;
-          console.log(returninfo);
-          returninfo = Object.getOwnPropertyNames(returninfo);
-          console.log(returninfo);
+    let JSterminal = $('#terminal');
+    jQuery(function ($, undefined) {
+        JSterminal.terminal(function (command) {
+            if (command !== '') {
+                try {
+                    let result = window.eval(command);
+                    if (result !== undefined) {
+                        console.log(typeof result);
+                        if ((typeof result) == "object") {
+                            this.echo(new String(result));
+                        } else {
+                            this.echo(new String(result));
+                        }
+                    }
+                } catch (e) {
+                    this.error(new String(e));
+                }
+            } else {
+                this.echo('');
+            }
+            this.scroll_to_bottom();
+        }, {
+                completion: function (string, callback) {
+                    let command_array = string.split(".");
+                    string = command_array.filter(v => v != '').join(".");
+                    if (command_array.length < 2) {
+                        callback(Object.getOwnPropertyNames(window));
+                    } else {
+                        let returninfo = new Array();
 
-          callback(returninfo);
-        }
-      },
-      doubleTab: true,
-      greetings: 'Javascript Interpreter',
-      name: 'JSterminal',
-      numChars: 80,
-      numRows: 40,
-      height: 420,
-      width: 620,
-      prompt: ">"
+                        console.log(returninfo);
+                        returninfo = Object.byString(window, "window." + string);
+                        temp = returninfo;
+                        console.log(returninfo);
+                        returninfo = Object.getOwnPropertyNames(returninfo);
+                        console.log(returninfo);
+
+                        callback(returninfo);
+                    }
+                },
+                doubleTab: true,
+                greetings: 'Javascript Interpreter',
+                name: 'JSterminal',
+                numChars: 80,
+                numRows: 40,
+                height: 420,
+                width: 620,
+                prompt: ">"
+            });
     });
-  });
 </script>
-
 </html>
