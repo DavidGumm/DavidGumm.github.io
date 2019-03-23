@@ -4,17 +4,45 @@
 <head>
   <meta charset="UTF-8">
   <title>jQuery Terminal</title>
-  <style>body{background: gray;}</style>
-  <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/jquery.terminal/js/jquery.terminal.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.5.3/css/foundation.min.css" integrity="sha256-xpOKVlYXzQ3P03j397+jWFZLMBXLES3IiryeClgU5og=" crossorigin="anonymous" />
   <link href="https://unpkg.com/jquery.terminal/css/jquery.terminal.css" rel="stylesheet" />
-  <script src="https://unpkg.com/js-polyfills/keyboard.js"></script>
-  <script src="https://cdn.terminal.jcubic.pl/wcwidth.js"></script>
+  <style media="screen">
+    body {
+      background: gray;
+    }
+
+    .site-wrapper {
+      width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .terminal {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+    }
+
+    textarea:focus.clipboard {
+      box-shadow: none;
+      -webkit-box-shadow: none;
+    }
+  </style>
 </head>
 
 <body>
-  <div id="terminal"></div>
-  <div id="console"></div>
+  <div class="site-wrapper">
+    <div id="terminal"></div>
+    <div id="console"></div>
+  </div>
+  <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.5.3/js/foundation.js" integrity="sha256-7WVbN/J2vA6l4tJnRTx1Yh3RGQUcNRAYLo0OV9qsL+k=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/jquery.terminal/js/jquery.terminal.js"></script>
+  <script src="https://unpkg.com/js-polyfills/keyboard.js"></script>
+  <script src="https://cdn.terminal.jcubic.pl/wcwidth.js"></script>
 </body>
 <script>
   Object.byString = function(object, string) {
@@ -76,7 +104,7 @@
       doubleTab: true,
       greetings: 'Javascript Interpreter',
       name: 'JSterminal',
-      numChars:80,
+      numChars: 80,
       numRows: 40,
       height: 420,
       width: 620,
@@ -84,4 +112,5 @@
     });
   });
 </script>
+
 </html>
