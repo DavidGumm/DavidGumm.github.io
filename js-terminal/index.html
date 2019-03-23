@@ -51,7 +51,7 @@
   let location_pathname = window.location.pathname.toString();
   let location_array = new Array();
   location_array.push(location_origin);
-  location_array.concat(location_pathname.split('/').filter(function (el) {return el != null}));
+  location_array = location_array.concat(location_pathname.split('/').filter(function (el) {return el != ""}));
 
 
 
