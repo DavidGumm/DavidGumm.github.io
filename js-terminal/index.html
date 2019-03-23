@@ -35,6 +35,7 @@
 
 <body>
   <div class="site-wrapper">
+
     <div id="terminal"></div>
     <div id="console"></div>
   </div>
@@ -45,6 +46,15 @@
   <script src="https://cdn.terminal.jcubic.pl/wcwidth.js"></script>
 </body>
 <script>
+
+  let location_origin = window.location.origin.toString();
+  let location_pathname = window.location.pathname.toString();
+  let location_array = new Array();
+  location_array.push(location_origin);
+  location_array.concat(location_pathname.split('/').filter(function (el) {return el != null}));
+
+
+
   Object.byString = function(object, string) {
     string = string.replace(/\[(\w+)\]/g, '.$1'); // convert indexes to properties
     string = string.replace(/^\./, ''); // strip a leading dot
