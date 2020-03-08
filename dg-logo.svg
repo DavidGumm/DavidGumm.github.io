@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   id="dg_logo"
+   version="1.1"
+   viewBox="0 0 1000 800">
+  <defs
+     id="dg_logo_defs" />
+  <metadata
+     id="dg_logo_metadata">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <path
+     id="dg_logo_path"
+     d="M 499.85,2.0000007e-6 A 390.02797,400.00143 0 0 1 888.57086,368.8872 H 588.42818 c 173.16178,25.6941 255.072,71.40438 293.79995,109.72679 A 390.02797,400.00143 0 0 1 528.68912,798.84702 499.99824,400.00143 0 0 0 999.84998,399.998 499.99824,400.00143 0 0 0 499.85,2.0000007e-6 Z M 471.03891,1.156902 A 499.99824,400.00143 0 0 0 -0.1499795,399.998 499.99824,400.00143 0 0 0 499.85,800 390.02797,400.00143 0 0 1 109.82203,399.998 390.02797,400.00143 0 0 1 471.03891,1.156902 Z M 499.85,17.954102 C 494.43689,150.27868 502.79331,274.06623 453.30162,400.00201 508.59877,540.24977 486.82178,652.24953 499.85,782.04977 511.07852,650.47724 500.06468,540.90488 546.40229,400.00201 495.10397,274.18218 515.32758,145.29557 499.85,17.954102 Z">
+</svg>
