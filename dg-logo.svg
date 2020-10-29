@@ -1,17 +1,55 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   id="dg_logo"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="1000"
+   height="1000"
+   viewBox="0 0 999.7 1000"
    version="1.1"
-   viewBox="0 0 1000 800">
+   id="svg8"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="dg-logo.svg"
+   inkscape:export-filename="C:\Users\gummd\source\repos\davidgumm.github.io.nuxt\static\dg-logo-icon.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96">
   <defs
-     id="dg_logo_defs" />
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.35"
+     inkscape:cx="575.75023"
+     inkscape:cy="266.73305"
+     inkscape:document-units="px"
+     inkscape:current-layer="svg8"
+     showgrid="false"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="1366"
+     inkscape:window-height="745"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     units="px"
+     viewbox-height="800"
+     viewbox-width="999.7" />
   <metadata
-     id="dg_logo_metadata">
+     id="metadata5">
     <rdf:RDF>
       <cc:Work
          rdf:about="">
@@ -23,6 +61,10 @@
     </rdf:RDF>
   </metadata>
   <path
-     id="dg_logo_path"
-     d="M 499.85,2.0000007e-6 A 390.02797,400.00143 0 0 1 888.57086,368.8872 H 588.42818 c 173.16178,25.6941 255.072,71.40438 293.79995,109.72679 A 390.02797,400.00143 0 0 1 528.68912,798.84702 499.99824,400.00143 0 0 0 999.84998,399.998 499.99824,400.00143 0 0 0 499.85,2.0000007e-6 Z M 471.03891,1.156902 A 499.99824,400.00143 0 0 0 -0.1499795,399.998 499.99824,400.00143 0 0 0 499.85,800 390.02797,400.00143 0 0 1 109.82203,399.998 390.02797,400.00143 0 0 1 471.03891,1.156902 Z M 499.85,17.954102 C 494.43689,150.27868 502.79331,274.06623 453.30162,400.00201 508.59877,540.24977 486.82178,652.24953 499.85,782.04977 511.07852,650.47724 500.06468,540.90488 546.40229,400.00201 495.10397,274.18218 515.32758,145.29557 499.85,17.954102 Z">
+     style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:116.91810608;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+     d="M 499.85,180 A 312.02238,320.00114 0 0 1 810.82669,475.10976 H 570.71254 c 138.52943,20.55528 204.0576,57.1235 235.03996,87.78143 A 312.02238,320.00114 0 0 1 522.9213,819.07762 399.99859,320.00114 0 0 0 899.84998,499.9984 399.99859,320.00114 0 0 0 499.85,180 Z m -23.04887,0.92552 A 399.99859,320.00114 0 0 0 99.850016,499.9984 399.99859,320.00114 0 0 0 499.85,820 312.02238,320.00114 0 0 1 187.82762,499.9984 312.02238,320.00114 0 0 1 476.80113,180.92552 Z M 499.85,194.36328 c -4.33049,105.85966 2.35465,204.8897 -37.2387,305.63833 44.23772,112.19821 26.81612,201.79801 37.2387,305.63821 8.98282,-105.25803 0.17174,-192.91592 37.24183,-305.63821 C 496.05318,399.34574 512.23206,296.23646 499.85,194.36328 Z"
+     id="path4620"
+     inkscape:connector-curvature="0"
+     inkscape:export-xdpi="96"
+     inkscape:export-ydpi="96" />
 </svg>
